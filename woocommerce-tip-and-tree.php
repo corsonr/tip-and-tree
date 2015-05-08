@@ -124,8 +124,8 @@ class WC_Tip_And_Tree {
 		);
 
 		$settings[] = array(
-			'title'    => __( 'Charity', 'woocommerce' ),
-			'desc'     => __( 'Enable the addition of 1% of cart total to charity', 'woocommerce' ),
+			'title'    => __( 'Carbon Impact Compensation', 'woocommerce' ),
+			'desc'     => __( 'Enable the addition of 1% of cart total to charity for reforestation', 'woocommerce' ),
 			'id'       => 'woocommerce_enable_charity',
 			'default'  => 'no',
 			'type'     => 'checkbox',
