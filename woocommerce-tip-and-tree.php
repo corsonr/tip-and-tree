@@ -74,13 +74,13 @@ class WC_Tip_And_Tree {
 		?>
 		<tr>
 			<td colspan="6">
-				<div class="ninjathon-charity">
+				<div class="tip-and-tree">
 					<h3><?php _e( 'Compensate Carbon Impact' ); ?></h3>
 					<?php
 						woocommerce_form_field( 'donate_charity', array(
 							'type' => 'checkbox',
 							'class' => array('donate_charity'),
-							'label' => __('Donate x% for reforestation to balance the carbon impact of your order.'),
+							'label' => __('Donate 1% for reforestation to balance the carbon impact of your order.'),
 							'required' => false,
 						), $donate_or_not );
 					?>
@@ -125,7 +125,7 @@ class WC_Tip_And_Tree {
 
 		$settings[] = array(
 			'title'    => __( 'Charity', 'woocommerce' ),
-			'desc'     => __( 'Enable the addition of x% of cart total to charity', 'woocommerce' ),
+			'desc'     => __( 'Enable the addition of 1% of cart total to charity', 'woocommerce' ),
 			'id'       => 'woocommerce_enable_charity',
 			'default'  => 'no',
 			'type'     => 'checkbox',
