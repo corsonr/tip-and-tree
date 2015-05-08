@@ -144,12 +144,12 @@ class WC_Tip_And_Tree {
 		$settings[] = array(
 			'title'    => __( 'Charity to give to', 'woocommerce' ),
 			'desc'     => __( 'Choose the charity your customer will give to', 'woocommerce' ),
-			'id'       => 'woocommerce_enable_charity_name',
+			'id'       => 'woocommerce_charity_name',
 			'type'     => 'select',
 			'desc_tip' =>  __( 'Your customers will give to the charity you choose here', 'woocommerce' ),
 			'options'  => apply_filters( 'charities_list', array(
 							'tipandtree@greenpeace.com' => 'GreenPeace',
-							'tipandtree@eden.com' => 'Eden Reforestation',
+							'tipandtree@eden.com'       => 'Eden Reforestation',
 							)
 						)
 		);
