@@ -29,6 +29,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * WC_Tip_And_Tree class
  */
 class WC_Tip_And_Tree {
+	
+	/**
+	 * Plugin version.
+	 *
+	 * @var string
+	 */
+	const PLUGIN_VERSION = '1.0';
 
     /**
      * Constructor
@@ -103,9 +110,9 @@ class WC_Tip_And_Tree {
 	public function woocommerce_donate_load_js() {
         wp_enqueue_script(
             'wocommerce-tip-and-tree', // Give the script an ID
-            untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) . '/assets/scripts.js', //Point to file
+            untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) . '/assets/tip_and_tree.js', //Point to file
             array( 'jquery' ),
-            '20150508',
+            self::PLUGIN_VERSION,
             true
         );
 	}
