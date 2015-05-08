@@ -83,9 +83,6 @@ class WC_Tip_And_Tree {
 	  // Remove Product Tab
 	  add_filter( 'woocommerce_product_data_tabs', array( $this, 'woocommerce_remove_adaptive_payment_product_tab' ) );
 	  
-	  // Remove default email recipient, use CSS as no filter is available
-	  add_filter( 'admin_footer', array( $this, 'woocommerce_hide_adaptive_payment_default_recipient' ) );
-	  
 	}
 	
 	/**
