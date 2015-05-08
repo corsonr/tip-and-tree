@@ -49,6 +49,7 @@ class WC_Tip_And_Tree {
 			add_action( 'init', array( $this, 'woocommerce_donate_set_session' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'woocommerce_donate_load_js' ) );
 			add_action( 'woocommerce_cart_emptied', array( $this, 'woocommerce_donate_clear_session' ) );
+			add_action( 'init', array( $this, 'woocommerce_adaptive_payment_cleaning' ) );
     	}
     }
 
@@ -65,14 +66,34 @@ class WC_Tip_And_Tree {
 
 		$donate_or_not = WC()->session->get( 'donate_charity' );
 
-		// Adds donation fee % based on order weight, shipping distance and packages number
+		// Adds donation fee % based on order weight, shipping distance
 		if ( true == $donate_or_not ) {
 			$percentage = 0.01;
 			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
 			$woocommerce->cart->add_fee( 'Tip and Tree Donation', $surcharge, true, 'standard' );
 		}
 	}
-
+	
+	/**
+	 * Remove PayPal Adaptive Payment un-necessary options
+	 */
+	public function woocommerce_adaptive_payment_cleaning() {
+	  
+	  // Remove Product Tab
+	  add_filter('woocommerce_product_data_tabs', array( $this, 'woocommerce_remove_adaptive_payment_product_tab' ) );
+	  
+	}
+	
+	/**
+	 * Delete PayPal Adaptive Payment prodct tab
+	 */
+	public function woocommerce_remove_adaptive_payment_product_tab( $tabs ) {
+	   
+	    unset( $tabs['paypal-adaptive-payments'] );
+	    
+	    return( $tabs );
+	}
+	
 	public function woocommerce_charity_toggle() {
 
 		global $woocommerce;
