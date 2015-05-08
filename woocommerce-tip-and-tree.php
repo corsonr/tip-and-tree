@@ -50,6 +50,7 @@ class WC_Tip_And_Tree {
 			add_action( 'wp_enqueue_scripts', array( $this, 'woocommerce_donate_load_js' ) );
 			add_action( 'woocommerce_cart_emptied', array( $this, 'woocommerce_donate_clear_session' ) );
 			add_action( 'init', array( $this, 'woocommerce_adaptive_payment_cleaning' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'woocommerce_load_admin_scripts' ) );
     	}
     }
 
@@ -80,7 +81,10 @@ class WC_Tip_And_Tree {
 	public function woocommerce_adaptive_payment_cleaning() {
 	  
 	  // Remove Product Tab
-	  add_filter('woocommerce_product_data_tabs', array( $this, 'woocommerce_remove_adaptive_payment_product_tab' ) );
+	  add_filter( 'woocommerce_product_data_tabs', array( $this, 'woocommerce_remove_adaptive_payment_product_tab' ) );
+	  
+	  // Remove default email recipient, use CSS as no filter is available
+	  add_filter( 'admin_footer', array( $this, 'woocommerce_hide_adaptive_payment_default_recipient' ) );
 	  
 	}
 	
@@ -92,6 +96,21 @@ class WC_Tip_And_Tree {
 	    unset( $tabs['paypal-adaptive-payments'] );
 	    
 	    return( $tabs );
+	}
+	
+	/**
+	 * Load admin scripts
+	 */
+	public function woocommerce_load_admin_scripts() {
+		
+		wp_register_style( 
+			'woocommerce-tip-and-tree-css', 
+			untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) . '/assets/admin/style.css',
+			false, 
+			self::PLUGIN_VERSION 
+		);
+        wp_enqueue_style( 'woocommerce-tip-and-tree-css' );
+        
 	}
 	
 	public function woocommerce_charity_toggle() {
@@ -131,7 +150,7 @@ class WC_Tip_And_Tree {
 
 	public function woocommerce_donate_load_js() {
         wp_enqueue_script(
-            'wocommerce-tip-and-tree', // Give the script an ID
+            'woocommerce-tip-and-tree', // Give the script an ID
             untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) . '/assets/tip_and_tree.js', //Point to file
             array( 'jquery' ),
             self::PLUGIN_VERSION,
