@@ -110,6 +110,9 @@ class WC_Tip_And_Tree {
         
 	}
 	
+	/**
+	 * Display Charity Fee on Cart Page
+	 */
 	public function woocommerce_charity_toggle() {
 
 		global $woocommerce;
@@ -135,6 +138,9 @@ class WC_Tip_And_Tree {
 		<?php
 	}
 
+	/**
+	 * Set WC Session
+	 */
 	public function woocommerce_donate_set_session() {
 		if ( ( ! empty( $_POST['apply_coupon'] ) || ! empty( $_POST['update_cart'] ) || ! empty( $_POST['proceed'] ) ) && isset( $_POST['_wpnonce'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'woocommerce-cart' ) ) {
 			if ( isset( $_POST['donate_charity'] ) ) {
@@ -145,6 +151,9 @@ class WC_Tip_And_Tree {
 		}
 	}
 
+	/**
+	 * Load frontend scripts
+	 */
 	public function woocommerce_donate_load_js() {
         wp_enqueue_script(
             'woocommerce-tip-and-tree', // Give the script an ID
@@ -155,11 +164,16 @@ class WC_Tip_And_Tree {
         );
 	}
 
+	/**
+	 * Clear WC session
+	 */
 	public function woocommerce_donate_clear_session() {
 		WC()->session->set( 'donate_charity', false );
 	}
 
-
+	/**
+	 * Register Tip on Tree Settings under checkout admin tab
+	 */
 	public function checkout_for_charity_settings( $settings ) {
 
 		$settings[] = array(
