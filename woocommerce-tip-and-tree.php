@@ -65,10 +65,11 @@ class WC_Tip_And_Tree {
 
 		$donate_or_not = WC()->session->get( 'donate_charity' );
 
+		// Adds donation fee % based on order weight, shipping distance and packages number
 		if ( true == $donate_or_not ) {
 			$percentage = 0.01;
 			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
-			$woocommerce->cart->add_fee( 'Donation', $surcharge, true, 'standard' );
+			$woocommerce->cart->add_fee( 'Tip and Tree Donation', $surcharge, true, 'standard' );
 		}
 	}
 
