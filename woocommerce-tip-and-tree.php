@@ -41,6 +41,10 @@ class WC_Tip_And_Tree {
      * Constructor
      */
     public function __construct() {
+	    
+	    // Load plugin text domain
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+		
     	add_filter( 'woocommerce_get_settings_checkout', array( $this, 'checkout_for_charity_settings' ), 20, 1 );
 
     	if ( 'yes' == get_option( 'woocommerce_enable_charity' ) ) {
@@ -53,6 +57,18 @@ class WC_Tip_And_Tree {
 			add_action( 'admin_enqueue_scripts', array( $this, 'woocommerce_load_admin_scripts' ) );
     	}
     }
+    
+	/**
+	 * Load the plugin text domain for translation.
+	 *
+	 * @return void
+	 */
+	public function load_plugin_textdomain() {
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-tip-and-tree' );
+
+		load_textdomain( 'woocommerce-tip-and-tree', trailingslashit( WP_LANG_DIR ) . 'tip-and-tree/woocommerce-tip-and-tree-' . $locale . '.mo' );
+		load_plugin_textdomain( 'woocommerce-tip-and-tree', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
 
 	/**
 	 * Add a x% surcharge to your cart / checkout
@@ -71,7 +87,7 @@ class WC_Tip_And_Tree {
 		if ( true == $donate_or_not ) {
 			$percentage = 0.01;
 			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
-			$woocommerce->cart->add_fee( 'Donation', $surcharge, true, 'standard' );
+			$woocommerce->cart->add_fee( __('Donation', 'woocommerce-tip-and-tree' ), $surcharge, true, 'standard' );
 		}
 	}
 	
@@ -138,12 +154,12 @@ class WC_Tip_And_Tree {
 		<tr>
 			<td colspan="6">
 				<div class="tip-and-tree">
-					<h3><?php _e( 'Compensate Carbon Impact' ); ?></h3>
+					<h3><?php _e( 'Compensate Carbon Impact', 'woocommerce-tip-and-tree' ); ?></h3>
 					<?php
 						woocommerce_form_field( 'donate_charity', array(
 							'type' => 'checkbox',
 							'class' => array('donate_charity'),
-							'label' => sprintf( __('Donate for reforestation to balance the carbon impact of your order. This will allow %s trees to be planted.'), number_format( $this->woocommerce_currency_in_trees( WC()->cart->total ) ) ),
+							'label' => sprintf( __('Donate for reforestation to balance the carbon impact of your order. This will allow %s trees to be planted.', 'woocommerce-tip-and-tree' ), number_format( $this->woocommerce_currency_in_trees( WC()->cart->total ) ) ),
 							'required' => false,
 						), $donate_or_not );
 					?>
@@ -193,26 +209,26 @@ class WC_Tip_And_Tree {
 
 		$settings[] = array(
 			'type' => 'title',
-			'title' => __( 'Tip and Tree Options', 'woocommerce' ),
+			'title' => __( 'Tip and Tree Options', 'woocommerce', 'woocommerce-tip-and-tree' ),
 			'id' => 'woocommerce_tip_and_tree_options',
 		);
 
 		$settings[] = array(
-			'title'    => __( 'Carbon Impact Compensation', 'woocommerce' ),
-			'desc'     => __( 'Enable the addition of 1% of cart total to charity for reforestation', 'woocommerce' ),
+			'title'    => __( 'Carbon Impact Compensation', 'woocommerce-tip-and-tree' ),
+			'desc'     => __( 'Enable the addition of 1% of cart total to charity for reforestation', 'woocommerce-tip-and-tree' ),
 			'id'       => 'woocommerce_enable_charity',
 			'default'  => 'no',
 			'type'     => 'checkbox',
-			'desc_tip' =>  __( 'Users will be presented with an option to add a donation to charity for reforestation', 'woocommerce' ),
+			'desc_tip' =>  __( 'Users will be presented with an option to add a donation to charity for reforestation', 'woocommerce-tip-and-tree' ),
 			'autoload' => false
 		);
 		
 		$settings[] = array(
-			'title'    => __( 'Charity to give to', 'woocommerce' ),
-			'desc'     => __( 'Choose the charity your customer will give to', 'woocommerce' ),
+			'title'    => __( 'Charity to give to', 'woocommerce-tip-and-tree' ),
+			'desc'     => __( 'Choose the charity your customer will give to', 'woocommerce-tip-and-tree' ),
 			'id'       => 'woocommerce_charity_name',
 			'type'     => 'select',
-			'desc_tip' =>  __( 'Your customers will give to the charity you choose here', 'woocommerce' ),
+			'desc_tip' =>  __( 'Your customers will give to the charity you choose here', 'woocommerce-tip-and-tree' ),
 			'options'  => apply_filters( 'charities_list', array(
 							'tipandtree@greenpeace.com' => 'GreenPeace',
 							'tipandtree@eden.com'       => 'Eden Reforestation',
