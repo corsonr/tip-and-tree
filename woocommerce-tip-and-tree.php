@@ -88,6 +88,13 @@ class WC_Tip_And_Tree {
 		} else {
 			$customer_country = $woocommerce->customer->get_shipping_country();
 			$customer_zipcode = $woocommerce->customer->get_shipping_postcode();
+		}
+		
+		// Get country name from country code
+		foreach( WC()->countries->get_shipping_countries() as $key => $value ) {
+			if( $key == $customer_country ) {
+				$customer_country = $value;
+			}
 		}		
 		
 		// Get shop base location and city
@@ -140,23 +147,20 @@ class WC_Tip_And_Tree {
 	}
 	
 	/*
-	 * Compute distance
+	 * Get distance between shop base location & customer location
 	*/
-	public function woocommerce_compute_distance($urlorigin,$urldesti,$key)
-	{	
-		// Parametre pour langue
-		$xml_url="https://maps.googleapis.com/maps/api/distancematrix/xml?origins="+$urlorigin+"&destinations="+$urldesti+"&language=fr-FR&key="+$key
-		//$xml_url="http://maps.google.com/maps/api/directions/xml?language=fr&origin="+$urlorigin+"&destination="+$urldesti+"&sensor=false";
+	public function woocommerce_get_distance( $location_origin, $location_destination ) {
 		
-		$dom = new DomDocument(); 
-		$dom->loadXML($xml_url);
+		// Get user Googe Matric API key
+		$api_key = get_option( 'woocommerce_matrix_api_key' );
+			
+		// Get details from Google Distance Matric API
+		$xml_url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" . $location_origin . "&destinations=" . $location_destination . "&language=" . str_replace( '_', '-', get_locale() ) . "&key=" . $api_key;
+
+		$matrix_output = json_decode( file_get_contents( $xml_url ), true );
 		
-		$distance =	$dom->getElementsByTagName("DistanceMatrixResponse")
-						->getElementsByTagName("row")
-						->getElementsByTagName("element")
-						->getElementsByTagName("distance")
-						->getElementsByTagName("value")
-						->nodeValue;
+		$distance =  $matrix_output['rows'][0]['elements'][0]['distance']['value'];
+						
 		return $distance;
 	}	
 	
@@ -245,6 +249,14 @@ class WC_Tip_And_Tree {
 			'type' => 'title',
 			'title' => __( 'Tip and Tree Options', 'woocommerce', 'woocommerce-tip-and-tree' ),
 			'id' => 'woocommerce_tip_and_tree_options',
+		);
+		
+		$settings[] = array(
+			'title'    => __( 'Distance Matrix API key', 'woocommerce-tip-and-tree' ),
+			'desc'     => __( 'Enter your API key here. Get you key <a href="https://console.developers.google.com/flows/enableapi?apiid=distance_matrix_backend&keyType=SERVER_SIDE">here</a>', 'woocommerce-tip-and-tree' ),
+			'id'       => 'woocommerce_matrix_api_key',
+			'type'     => 'text',
+			'autoload' => false
 		);
 
 		$settings[] = array(
