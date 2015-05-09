@@ -102,6 +102,9 @@ class WC_Tip_And_Tree {
 		$shop_base_city    = $woocommerce->countries->get_base_country();
 
 		$donate_or_not = WC()->session->get( 'donate_charity' );
+		
+		// Get cart weight
+		$cart_weight = $woocommerce->cart->cart_contents_weight;
 
 		// Adds donation fee % based on order weight, shipping distance
 		if ( true == $donate_or_not ) {
