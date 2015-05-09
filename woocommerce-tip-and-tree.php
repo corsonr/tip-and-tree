@@ -112,6 +112,23 @@ class WC_Tip_And_Tree {
 		// Get distance between shop base location and customer location
 		$distance = $this->woocommerce_get_distance( $shop_base_country, $customer_country );
 		
+		$percentage = $this->woocommerce_get_fee_percentage( $distance, $cart_total, $cart_weight );
+
+		//echo 'Distance ' . $distance . '<br />Percent ' . $percentage . '<br />Cart total: ' . $cart_total . '<br />Cart weight : ' . $cart_weight;
+
+		// Adds donation fee % based on order weight, shipping distance
+		if ( true == $donate_or_not ) {
+			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
+			$woocommerce->cart->add_fee( __('Donation', 'woocommerce-tip-and-tree' ), $surcharge, true, 'standard' );
+			wc_add_notice( sprintf( __( 'Thank you, your donation will allow %s trees to be planted.', 'woocommerce' ), number_format( $this->woocommerce_currency_in_trees( $surcharge ) ) ) );
+		}
+	}
+	
+	/**
+	 * Calculate fee percentage
+	 */
+	public function woocommerce_get_fee_percentage( $distance, $cart_total, $cart_weight ) {
+	  
 		// Define fee percentage
 		$percentage =  0;
 		
@@ -180,14 +197,9 @@ class WC_Tip_And_Tree {
 		} else {
 			$percentage += 0.05;
 		}
-
-		//echo 'Distance ' . $distance . '<br />Percent ' . $percentage . '<br />Cart total: ' . $cart_total . '<br />Cart weight : ' . $cart_weight;
-
-		// Adds donation fee % based on order weight, shipping distance
-		if ( true == $donate_or_not ) {
-			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
-			$woocommerce->cart->add_fee( __('Donation', 'woocommerce-tip-and-tree' ), $surcharge, true, 'standard' );
-		}
+		
+		return $percentage;
+	  
 	}
 	
 	/**
@@ -276,7 +288,7 @@ class WC_Tip_And_Tree {
 						woocommerce_form_field( 'donate_charity', array(
 							'type' => 'checkbox',
 							'class' => array('donate_charity'),
-							'label' => sprintf( __('Donate for reforestation to balance the carbon impact of your order. This will allow %s trees to be planted.', 'woocommerce-tip-and-tree' ), number_format( $this->woocommerce_currency_in_trees( WC()->cart->total ) ) ),
+							'label' => __('Donate for reforestation to balance the carbon impact of your order.', 'woocommerce-tip-and-tree' ),
 							'required' => false,
 						), $donate_or_not );
 					?>
