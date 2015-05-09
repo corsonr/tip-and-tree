@@ -105,10 +105,86 @@ class WC_Tip_And_Tree {
 		
 		// Get cart weight
 		$cart_weight = $woocommerce->cart->cart_contents_weight;
+		
+		// Get cart total
+		$cart_total = $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total;
+		
+		// Get distance between shop base location and customer location
+		$distance = $this->woocommerce_get_distance( $shop_base_country, $customer_country );
+		
+		// Define fee percentage
+		$percentage =  0;
+		
+		// Adjust percentage fee based on distance
+		// the higher $distance is, the higher $percentage is
+		if( $distance >= 0 &&  $distance < 1000 ) {
+		    $percentage += 0.01;
+		} elseif( $distance >= 1000 &&  $distance < 5000 ) {
+			$percentage += 0.015;
+		} elseif( $distance >= 5000 &&  $distance < 20000 ) {
+			$percentage += 0.02;
+		} elseif( $distance >= 20000 &&  $distance < 100000 ) {
+			$percentage += 0.025;
+		} elseif( $distance >= 100000 &&  $distance < 500000 ) {
+			$percentage += 0.03;
+		} elseif( $distance >= 500000 &&  $distance < 1000000 ) {
+			$percentage += 0.035;
+		} elseif( $distance >= 1000000 &&  $distance < 2000000 ) {
+			$percentage += 0.04;
+		} elseif( $distance >= 2000000 &&  $distance < 5000000 ) {
+			$percentage += 0.045;
+		} else {
+			$percentage += 0.05;
+		}
+		
+		// Adjust percentage fee based on cart total
+		// the higher $cart_total is, the lower $percentage is
+		if( $cart_total >= 0 &&  $cart_total < 100 ) {
+		    $percentage += 0.05;
+		} elseif( $cart_total >= 100 &&  $cart_total < 500 ) {
+			$percentage += 0.045;
+		} elseif( $cart_total >= 500 &&  $cart_total < 2000 ) {
+			$percentage += 0.04;
+		} elseif( $cart_total >= 2000 &&  $cart_total < 10000 ) {
+			$percentage += 0.035;
+		} elseif( $cart_total >= 10000 &&  $cart_total < 50000 ) {
+			$percentage += 0.03;
+		} elseif( $cart_total >= 50000 &&  $cart_total < 100000 ) {
+			$percentage += 0.025;
+		} elseif( $cart_total >= 100000 &&  $cart_total < 200000 ) {
+			$percentage += 0.02;
+		} elseif( $cart_total >= 200000 &&  $cart_total < 500000 ) {
+			$percentage += 0.015;
+		} else {
+			$percentage += 0.01;
+		}
+		
+		// Adjust percentage fee based on cart weight
+		// the higher $cart_weight is, the lower $percentage is
+		if( $cart_weight >= 0 &&  $cart_weight < 10 ) {
+		    $percentage += 0.01;
+		} elseif( $cart_weight >= 10 &&  $cart_weight < 50 ) {
+			$percentage += 0.015;
+		} elseif( $cart_weight >= 50 &&  $cart_weight < 200 ) {
+			$percentage += 0.02;
+		} elseif( $cart_weight >= 200 &&  $cart_weight < 1000 ) {
+			$percentage += 0.025;
+		} elseif( $cart_weight >= 1000 &&  $cart_weight < 5000 ) {
+			$percentage += 0.03;
+		} elseif( $cart_weight >= 5000 &&  $cart_weight < 10000 ) {
+			$percentage += 0.035;
+		} elseif( $cart_weight >= 10000 &&  $cart_weight < 20000 ) {
+			$percentage += 0.04;
+		} elseif( $cart_weight >= 20000 &&  $cart_weight < 50000 ) {
+			$percentage += 0.045;
+		} else {
+			$percentage += 0.05;
+		}
+
+		//echo 'Distance ' . $distance . '<br />Percent ' . $percentage . '<br />Cart total: ' . $cart_total . '<br />Cart weight : ' . $cart_weight;
 
 		// Adds donation fee % based on order weight, shipping distance
 		if ( true == $donate_or_not ) {
-			$percentage = 0.01;
 			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
 			$woocommerce->cart->add_fee( __('Donation', 'woocommerce-tip-and-tree' ), $surcharge, true, 'standard' );
 		}
