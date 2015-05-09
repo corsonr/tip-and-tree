@@ -81,9 +81,14 @@ class WC_Tip_And_Tree {
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) )
 			return;
 			
-		// Get customer country and city
-		$customer_country = $woocommerce->customer->get_shipping_country();
-		$customer_zipcode = $woocommerce->customer->get_shipping_postcode();
+		// Get customer country and zip
+		if ( 'geolocation' === get_option( 'woocommerce_default_customer_address' ) ) {
+			$customer_geolocated_ip = WC_Geolocation::geolocate_ip();
+			$customer_country = $customer_geolocated_ip['country'];
+		} else {
+			$customer_country = $woocommerce->customer->get_shipping_country();
+			$customer_zipcode = $woocommerce->customer->get_shipping_postcode();
+		}		
 		
 		// Get shop base location and city
 		$shop_base_country = $woocommerce->countries->get_base_country();
