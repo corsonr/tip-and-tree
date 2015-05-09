@@ -81,11 +81,13 @@ class WC_Tip_And_Tree {
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) )
 			return;
 			
-		// Get customer country
-		$customer_country = $woocommerce->customer->get_default_country();
+		// Get customer country and city
+		$customer_country = $woocommerce->customer->get_shipping_country();
+		$customer_zipcode = $woocommerce->customer->get_shipping_postcode();
 		
-		// Get shop base location
+		// Get shop base location and city
 		$shop_base_country = $woocommerce->countries->get_base_country();
+		$shop_base_city    = $woocommerce->countries->get_base_country();
 
 		$donate_or_not = WC()->session->get( 'donate_charity' );
 
