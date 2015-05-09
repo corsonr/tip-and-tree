@@ -71,7 +71,7 @@ class WC_Tip_And_Tree {
 		if ( true == $donate_or_not ) {
 			$percentage = 0.01;
 			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
-			$woocommerce->cart->add_fee( 'Tip and Tree Donation', $surcharge, true, 'standard' );
+			$woocommerce->cart->add_fee( 'Donation', $surcharge, true, 'standard' );
 		}
 	}
 	
@@ -93,6 +93,21 @@ class WC_Tip_And_Tree {
 	    unset( $tabs['paypal-adaptive-payments'] );
 	    
 	    return( $tabs );
+	}
+	
+	/**
+	 * Convert Currency in Trees
+	 */
+	public function woocommerce_currency_in_trees( $amount ) {
+		
+		if( $amount ) {
+			$tree_cost = apply_filters( 'tree_cost', 2.5 );
+			$trees_equivalence = ( $amount / $tree_cost );
+		
+			return( $trees_equivalence );
+		} else {
+			return;
+		}
 	}
 	
 	/**
@@ -128,7 +143,7 @@ class WC_Tip_And_Tree {
 						woocommerce_form_field( 'donate_charity', array(
 							'type' => 'checkbox',
 							'class' => array('donate_charity'),
-							'label' => __('Donate 1% for reforestation to balance the carbon impact of your order.'),
+							'label' => sprintf( __('Donate for reforestation to balance the carbon impact of your order. This will allow %s trees to be planted.'), number_format( $this->woocommerce_currency_in_trees( WC()->cart->total ) ) ),
 							'required' => false,
 						), $donate_or_not );
 					?>
