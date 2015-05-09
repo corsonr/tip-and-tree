@@ -76,10 +76,16 @@ class WC_Tip_And_Tree {
 	 * Uses the WooCommerce fees API
 	 */
 	public function woocommerce_custom_surcharge() {
-	  global $woocommerce;
+		global $woocommerce;
 
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) )
 			return;
+			
+		// Get customer country
+		$customer_country = $woocommerce->customer->get_default_country();
+		
+		// Get shop base location
+		$shop_base_country = $woocommerce->countries->get_base_country();
 
 		$donate_or_not = WC()->session->get( 'donate_charity' );
 
