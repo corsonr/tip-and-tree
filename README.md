@@ -1,4 +1,4 @@
-# WooCommerce Tip & Tree
+# ![WooCommerce](http://woocommerce.com) Tip & Tree
 
 Project build during Enssat Hackathon.
 
