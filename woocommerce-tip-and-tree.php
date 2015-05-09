@@ -120,7 +120,9 @@ class WC_Tip_And_Tree {
 		if ( true == $donate_or_not ) {
 			$surcharge = ( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage;
 			$woocommerce->cart->add_fee( __('Donation', 'woocommerce-tip-and-tree' ), $surcharge, true, 'standard' );
-			wc_add_notice( sprintf( __( 'Thank you, your donation will allow %s trees to be planted.', 'woocommerce' ), number_format( $this->woocommerce_currency_in_trees( $surcharge ) ) ) );
+			wc_add_notice( 
+					 sprintf( _n( "Thank you, your donation will allow 1 tree to be planted.", "Thank you, your donation will allow %s trees to be planted.", ceil( $this->woocommerce_currency_in_trees( $surcharge ) ), "text_domain" ), ceil( $this->woocommerce_currency_in_trees( $surcharge ) ) )
+			);
 		}
 	}
 	
