@@ -139,6 +139,27 @@ class WC_Tip_And_Tree {
 		}
 	}
 	
+	/*
+	 * Compute distance
+	*/
+	public function woocommerce_compute_distance($urlorigin,$urldesti)
+	{		
+		$xml_url="http://maps.google.com/maps/api/directions/xml?language=fr&origin="+$urlorigin+"&destination="+$urldesti+"&sensor=false";
+		
+		$dom = new DomDocument(); 
+		$dom->loadXML($xml_url);
+		
+		$l_metre =	$dom->getElementsByTagName("route")
+						->getElementsByTagName("leg")
+						->getElementsByTagName("distance")
+						->getElementsByTagName("value")
+						->nodeValue;
+
+		$km=$l_metre/100;
+						
+		return $km;
+	}	
+	
 	/**
 	 * Load admin scripts
 	 */
