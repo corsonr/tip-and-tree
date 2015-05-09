@@ -142,22 +142,22 @@ class WC_Tip_And_Tree {
 	/*
 	 * Compute distance
 	*/
-	public function woocommerce_compute_distance($urlorigin,$urldesti)
-	{		
-		$xml_url="http://maps.google.com/maps/api/directions/xml?language=fr&origin="+$urlorigin+"&destination="+$urldesti+"&sensor=false";
+	public function woocommerce_compute_distance($urlorigin,$urldesti,$key)
+	{	
+		// Parametre pour langue
+		$xml_url="https://maps.googleapis.com/maps/api/distancematrix/xml?origins="+$urlorigin+"&destinations="+$urldesti+"&language=fr-FR&key="+$key
+		//$xml_url="http://maps.google.com/maps/api/directions/xml?language=fr&origin="+$urlorigin+"&destination="+$urldesti+"&sensor=false";
 		
 		$dom = new DomDocument(); 
 		$dom->loadXML($xml_url);
 		
-		$l_metre =	$dom->getElementsByTagName("route")
-						->getElementsByTagName("leg")
+		$distance =	$dom->getElementsByTagName("DistanceMatrixResponse")
+						->getElementsByTagName("row")
+						->getElementsByTagName("element")
 						->getElementsByTagName("distance")
 						->getElementsByTagName("value")
 						->nodeValue;
-
-		$km=$l_metre/100;
-						
-		return $km;
+		return $distance;
 	}	
 	
 	/**
