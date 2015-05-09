@@ -2,13 +2,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Tip and Tree 1.0\n"
-"POT-Creation-Date: 2015-05-09 13:19+0100\n"
-"PO-Revision-Date: 2015-05-09 13:19+0100\n"
+"POT-Creation-Date: 2015-05-09 14:04+0100\n"
+"PO-Revision-Date: 2015-05-09 14:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_EN\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.7.4\n"
@@ -40,8 +40,7 @@ msgid "Carbon Impact Compensation"
 msgstr ""
 
 #: ../woocommerce-tip-and-tree.php:218
-#, php-format
-msgid "Enable the addition of 1% of cart total to charity for reforestation"
+msgid "Enable the addition of fee for a charity for reforestation"
 msgstr ""
 
 #: ../woocommerce-tip-and-tree.php:222
@@ -66,25 +65,25 @@ msgstr ""
 #~ msgstr "aucune"
 
 #~ msgid "Default Eco-Participation Status"
-#~ msgstr "Etat de l'éco-participation par défaut"
+#~ msgstr "Etat de l'Ã©co-participation par dÃ©faut"
 
 #~ msgid "Enable this to allow eco-participation by default."
-#~ msgstr "Activer cette option pour appliquer une éco-taxe par défaut."
+#~ msgstr "Activer cette option pour appliquer une Ã©co-taxe par dÃ©faut."
 
 #~ msgid "Default Eco-Participation Cost"
-#~ msgstr "Montant de l'éco-participation par défaut."
+#~ msgstr "Montant de l'Ã©co-participation par dÃ©faut."
 
 #~ msgid "The global cost of eco-participation unless overridden per-product."
-#~ msgstr "Coût global de l'éco-participation sauf si indiqué par produit."
+#~ msgstr "CoÃ»t global de l'Ã©co-participation sauf si indiquÃ© par produit."
 
 #~ msgid "Eco-Participation Message"
-#~ msgstr "Message d'éco-participation"
+#~ msgstr "Message d'Ã©co-participation"
 
 #~ msgid "Default"
-#~ msgstr "Par défaut"
+#~ msgstr "Par dÃ©faut"
 
 #~ msgid "The text shown to the user on the frontend."
-#~ msgstr "Texte affiché sur la page produit."
+#~ msgstr "Texte affichÃ© sur la page produit."
 
 #~ msgid "Eco-Participation"
 #~ msgstr "Eco-Participation"
@@ -93,10 +92,10 @@ msgstr ""
 #~ msgstr "Eco-Participation ?"
 
 #~ msgid "Enable this option if the product has eco-participation."
-#~ msgstr "Activer l'option si le produit à une éco-participation."
+#~ msgstr "Activer l'option si le produit Ã  une Ã©co-participation."
 
 #~ msgid "Eco-Participation Cost"
-#~ msgstr "Montant de l'éco-participation"
+#~ msgstr "Montant de l'Ã©co-participation"
 
 #~ msgid "Override the default cost by inputting a cost here."
-#~ msgstr "Indiquer un montant qui remplacera le montant par défaut."
+#~ msgstr "Indiquer un montant qui remplacera le montant par dÃ©faut."
