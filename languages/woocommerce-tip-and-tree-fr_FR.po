@@ -1,0 +1,109 @@
+# This file is distributed under the same license as the WooCommerce Product Gift Wrap package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Tip and Tree 1.0\n"
+"POT-Creation-Date: 2015-05-09 13:25+0100\n"
+"PO-Revision-Date: 2015-05-09 13:26+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_EN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-KeywordsList: _e;__;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../woocommerce-tip-and-tree.php:90
+msgid "Donation"
+msgstr "Don"
+
+#: ../woocommerce-tip-and-tree.php:157
+msgid "Compensate Carbon Impact"
+msgstr "Compenser l'impact carbone"
+
+#: ../woocommerce-tip-and-tree.php:162
+#, php-format
+msgid ""
+"Donate for reforestation to balance the carbon impact of your order. This "
+"will allow %s trees to be planted."
+msgstr ""
+"Don pour la reforestation pour compenser l'impact carbone de votre commande. "
+"Cela permettra la plantation de %s arbres."
+
+#: ../woocommerce-tip-and-tree.php:212
+msgid "Tip and Tree Options"
+msgstr "Options Tip & Tree"
+
+#: ../woocommerce-tip-and-tree.php:217
+msgid "Carbon Impact Compensation"
+msgstr "Compensation de l'empreinte carbone"
+
+#: ../woocommerce-tip-and-tree.php:218
+msgid "Enable the addition of fee for a charity for reforestation"
+msgstr "Activer l'ajout d'une taxe pour la reforestation."
+
+#: ../woocommerce-tip-and-tree.php:222
+msgid ""
+"Users will be presented with an option to add a donation to charity for "
+"reforestation"
+msgstr ""
+"Les clients se verront présenté une option pour ajouter un don pour la "
+"reforestation."
+
+#: ../woocommerce-tip-and-tree.php:227
+msgid "Charity to give to"
+msgstr "Association caritative"
+
+#: ../woocommerce-tip-and-tree.php:228
+msgid "Choose the charity your customer will give to"
+msgstr "Choisir l'association qui recevra les dons."
+
+#: ../woocommerce-tip-and-tree.php:231
+msgid "Your customers will give to the charity you choose here"
+msgstr "Vos clients feront un don à l'association choisie ici."
+
+#~ msgid "Enable the addition of 1% of cart total to charity for reforestation"
+#~ msgstr ""
+#~ "Activer la taxe additionnelle au panier de 1% pour la reforestation."
+
+#~ msgid "none"
+#~ msgstr "aucune"
+
+#~ msgid "Default Eco-Participation Status"
+#~ msgstr "Etat de l'éco-participation par défaut"
+
+#~ msgid "Enable this to allow eco-participation by default."
+#~ msgstr "Activer cette option pour appliquer une éco-taxe par défaut."
+
+#~ msgid "Default Eco-Participation Cost"
+#~ msgstr "Montant de l'éco-participation par défaut."
+
+#~ msgid "The global cost of eco-participation unless overridden per-product."
+#~ msgstr "Coût global de l'éco-participation sauf si indiqué par produit."
+
+#~ msgid "Eco-Participation Message"
+#~ msgstr "Message d'éco-participation"
+
+#~ msgid "Default"
+#~ msgstr "Par défaut"
+
+#~ msgid "The text shown to the user on the frontend."
+#~ msgstr "Texte affiché sur la page produit."
+
+#~ msgid "Eco-Participation"
+#~ msgstr "Eco-Participation"
+
+#~ msgid "Eco-Participation ?"
+#~ msgstr "Eco-Participation ?"
+
+#~ msgid "Enable this option if the product has eco-participation."
+#~ msgstr "Activer l'option si le produit à une éco-participation."
+
+#~ msgid "Eco-Participation Cost"
+#~ msgstr "Montant de l'éco-participation"
+
+#~ msgid "Override the default cost by inputting a cost here."
+#~ msgstr "Indiquer un montant qui remplacera le montant par défaut."
