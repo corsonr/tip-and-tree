@@ -122,7 +122,7 @@ class WC_Tip_And_Tree {
 			$woocommerce->cart->add_fee( __('Donation', 'woocommerce-tip-and-tree' ), $surcharge, true, 'standard' );
 			wc_add_notice( 
 					 sprintf( 
-					 	__( 'Thank you, your donation will allow %s tree(s) to be planted.', ceil( $this->woocommerce_currency_in_trees( $surcharge ) ), 'woocommerce-tip-and-tree' ), 
+					 	__( 'Thank you, your donation will allow %s tree(s) to be planted.', 'woocommerce-tip-and-tree' ), 
 					 	ceil( $this->woocommerce_currency_in_trees( $surcharge ) ) 
 					 	)
 			);
