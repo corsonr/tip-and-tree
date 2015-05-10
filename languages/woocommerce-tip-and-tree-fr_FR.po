@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Tip and Tree 1.0\n"
-"POT-Creation-Date: 2015-05-10 10:23+0100\n"
-"PO-Revision-Date: 2015-05-10 10:24+0100\n"
+"POT-Creation-Date: 2015-05-10 10:30+0100\n"
+"PO-Revision-Date: 2015-05-10 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_EN\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.7.4\n"
-"X-Poedit-KeywordsList: _e;__;_x\n"
+"X-Poedit-KeywordsList: _e;__;_x;_n\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
@@ -20,25 +20,30 @@ msgstr ""
 msgid "Donation"
 msgstr "Don"
 
-#: ../woocommerce-tip-and-tree.php:288
+#: ../woocommerce-tip-and-tree.php:125
+#, php-format
+msgid "Thank you, your donation will allow %s tree(s) to be planted."
+msgstr "Merci ! Votre don permettra la plantation de %s arbre(s)."
+
+#: ../woocommerce-tip-and-tree.php:291
 msgid "Compensate Carbon Impact"
 msgstr "Compenser l'impact carbone"
 
-#: ../woocommerce-tip-and-tree.php:293
+#: ../woocommerce-tip-and-tree.php:296
 msgid "Donate for reforestation to balance the carbon impact of your order."
 msgstr ""
 "Don pour la reforestation pour compenser l'empreinte carbone de votre "
 "commande."
 
-#: ../woocommerce-tip-and-tree.php:343
+#: ../woocommerce-tip-and-tree.php:346
 msgid "Tip and Tree Options"
 msgstr "Options Tip & Tree"
 
-#: ../woocommerce-tip-and-tree.php:348
+#: ../woocommerce-tip-and-tree.php:351
 msgid "Distance Matrix API key"
 msgstr "Clé API Distance Matrix"
 
-#: ../woocommerce-tip-and-tree.php:349
+#: ../woocommerce-tip-and-tree.php:352
 msgid ""
 "Enter your API key here. Get you key <a href=\"https://console.developers."
 "google.com/flows/enableapi?apiid=distance_matrix_backend&keyType=SERVER_SIDE"
@@ -48,15 +53,15 @@ msgstr ""
 "developers.google.com/flows/enableapi?"
 "apiid=distance_matrix_backend&keyType=SERVER_SIDE\">ici</a>"
 
-#: ../woocommerce-tip-and-tree.php:356
+#: ../woocommerce-tip-and-tree.php:359
 msgid "Carbon Impact Compensation"
 msgstr "Compensation de l'empreinte carbone"
 
-#: ../woocommerce-tip-and-tree.php:357
+#: ../woocommerce-tip-and-tree.php:360
 msgid "Enable the addition of fee for a charity for reforestation"
 msgstr "Activer l'ajout d'une taxe pour la reforestation."
 
-#: ../woocommerce-tip-and-tree.php:361
+#: ../woocommerce-tip-and-tree.php:364
 msgid ""
 "Users will be presented with an option to add a donation to charity for "
 "reforestation"
@@ -64,15 +69,15 @@ msgstr ""
 "Les clients se verront présenté une option pour ajouter un don pour la "
 "reforestation."
 
-#: ../woocommerce-tip-and-tree.php:366
+#: ../woocommerce-tip-and-tree.php:369
 msgid "Charity to give to"
 msgstr "Association caritative"
 
-#: ../woocommerce-tip-and-tree.php:367
+#: ../woocommerce-tip-and-tree.php:370
 msgid "Choose the charity your customer will give to"
 msgstr "Choisir l'association qui recevra les dons."
 
-#: ../woocommerce-tip-and-tree.php:370
+#: ../woocommerce-tip-and-tree.php:373
 msgid "Your customers will give to the charity you choose here"
 msgstr "Vos clients feront un don à l'association choisie ici."
 
