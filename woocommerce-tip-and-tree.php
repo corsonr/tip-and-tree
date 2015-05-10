@@ -126,7 +126,29 @@ class WC_Tip_And_Tree {
 					 	ceil( $this->woocommerce_currency_in_trees( $surcharge ) ) 
 					 	)
 			);
+			
+			add_filter( 'woocommerce_paypal_ap_payment_args', array( $this, 'woocommerce_paypal_ap_payment_args' ), 10, 2 );
 		}
+	}
+	
+	/**
+	 * Custom PayPal Adaptive Payments args.
+	 */
+	function woocommerce_paypal_ap_payment_args( $args, $order ) {
+		
+		$charity_email = 'shop@woo.com';
+		
+		$args['receiverList'] = array(
+			'receiver' => array(
+				array(
+					'amount' => '7.00', //demo value
+					'email'  => $charity_email,
+					// 'primary' => 'true' // use this only for Chained Payment.
+				)
+			)
+		);
+	
+		return $args;
 	}
 	
 	/**
