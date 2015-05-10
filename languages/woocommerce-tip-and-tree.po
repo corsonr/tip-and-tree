@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Tip and Tree 1.0\n"
-"POT-Creation-Date: 2015-05-09 14:04+0100\n"
-"PO-Revision-Date: 2015-05-09 14:04+0100\n"
+"POT-Creation-Date: 2015-05-10 10:24+0100\n"
+"PO-Revision-Date: 2015-05-10 10:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_EN\n"
@@ -16,48 +16,56 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../woocommerce-tip-and-tree.php:90
+#: ../woocommerce-tip-and-tree.php:122
 msgid "Donation"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:157
+#: ../woocommerce-tip-and-tree.php:288
 msgid "Compensate Carbon Impact"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:162
-#, php-format
-msgid ""
-"Donate for reforestation to balance the carbon impact of your order. This "
-"will allow %s trees to be planted."
+#: ../woocommerce-tip-and-tree.php:293
+msgid "Donate for reforestation to balance the carbon impact of your order."
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:212
+#: ../woocommerce-tip-and-tree.php:343
 msgid "Tip and Tree Options"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:217
+#: ../woocommerce-tip-and-tree.php:348
+msgid "Distance Matrix API key"
+msgstr ""
+
+#: ../woocommerce-tip-and-tree.php:349
+msgid ""
+"Enter your API key here. Get you key <a href=\"https://console.developers."
+"google.com/flows/enableapi?apiid=distance_matrix_backend&keyType=SERVER_SIDE"
+"\">here</a>"
+msgstr ""
+
+#: ../woocommerce-tip-and-tree.php:356
 msgid "Carbon Impact Compensation"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:218
+#: ../woocommerce-tip-and-tree.php:357
 msgid "Enable the addition of fee for a charity for reforestation"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:222
+#: ../woocommerce-tip-and-tree.php:361
 msgid ""
 "Users will be presented with an option to add a donation to charity for "
 "reforestation"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:227
+#: ../woocommerce-tip-and-tree.php:366
 msgid "Charity to give to"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:228
+#: ../woocommerce-tip-and-tree.php:367
 msgid "Choose the charity your customer will give to"
 msgstr ""
 
-#: ../woocommerce-tip-and-tree.php:231
+#: ../woocommerce-tip-and-tree.php:370
 msgid "Your customers will give to the charity you choose here"
 msgstr ""
 
